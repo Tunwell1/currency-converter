@@ -1,0 +1,28 @@
+@import url('../../App.css');
+
+.exchange-button {
+    border: 2px solid rgba(0, 0, 0, 0.525);
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.exchange-button:hover {
+    border: 2px solid var(--primary-color);
+}
+
+.exchange-button:hover img {
+    transform: rotate(180deg)
+}
+
+.exchange-button:active {
+    transform: scale(0.9);
+}
+
+.exchange-button img {
+    height: 1.5rem;
+    width: 1.5rem;
+    transition: all 0.3s ease-in-out;
+}

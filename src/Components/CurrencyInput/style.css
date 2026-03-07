@@ -1,0 +1,35 @@
+@import url('../../App.css');
+
+.currency-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.flag {
+    height: 2rem !important;
+    width: 2rem !important;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+select {
+    border: none;
+    color: var(--primary-color);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    font-weight: bold;
+}
+
+option {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+input {
+    border: none;
+    color: var(--primary-color);
+    border-radius: 0.5rem; 
+    padding: 0.5rem;   
+    font-weight: 500;
+}
