@@ -7,7 +7,7 @@ function App() {
   const {
     currencies, currencyOne, setCurrencyOne,
     currencyTwo, setCurrencyTwo, setFromSide,
-    exchangeCurrencies, isLoading, fromSide
+    exchangeCurrencies
   } = useCurrencyConverter();
 
   return (
@@ -15,7 +15,7 @@ function App() {
       <h2>Currency Converter</h2>
 
       <CurrencyInput
-        amount={ fromSide == 2 && isLoading ? '...' : currencyOne.amount}
+        amount={currencyOne.amount}
         code={currencyOne.code}
         currencies={currencies}
         excludedCode={currencyTwo.code}
@@ -26,7 +26,7 @@ function App() {
       <ExchangeButton onClick={exchangeCurrencies} />
 
       <CurrencyInput
-        amount={ fromSide == 1 && isLoading ? '...' : currencyTwo.amount}
+        amount={currencyTwo.amount}
         code={currencyTwo.code}
         currencies={currencies}
         excludedCode={currencyOne.code}
