@@ -6,6 +6,7 @@ export function useCurrencyConverter() {
     const [currencyOne, setCurrencyOne] = useState({ code: 'USD', amount: 0 });
     const [currencyTwo, setCurrencyTwo] = useState({ code: 'EUR', amount: 0 });
     const [fromSide, setFromSide] = useState<1 | 2>(1);
+    const [error, setError] = useState<string | null>();
 
     const exchangeCurrencies = () => {
         const temp = currencyOne.code;
@@ -15,16 +16,16 @@ export function useCurrencyConverter() {
     };
 
     useEffect(() => {
-        fetchCurrencies().then(setCurrencies).catch(console.error);
+        fetchCurrencies(setError).then(setCurrencies);
     }, []);
 
     useEffect(() => {
         const performConversion = async () => {
             if (fromSide === 1) {
-                const result = await convertCurrency(currencyOne.code, currencyTwo.code, currencyOne.amount);
+                const result = await convertCurrency( setError, currencyOne.code, currencyTwo.code, currencyOne.amount);
                 setCurrencyTwo(prev => ({ ...prev, amount: Number(result), prevAmount: currencyTwo.amount }));
             } else {
-                const result = await convertCurrency(currencyTwo.code, currencyOne.code, currencyTwo.amount);
+                const result = await convertCurrency( setError,currencyTwo.code, currencyOne.code, currencyTwo.amount);
                 setCurrencyOne(prev => ({ ...prev, amount: Number(result), prevAmount: currencyOne.amount }));
             }
         };
@@ -37,7 +38,7 @@ export function useCurrencyConverter() {
         currencies,
         currencyOne, setCurrencyOne,
         currencyTwo, setCurrencyTwo,
-        setFromSide, fromSide,
+        setFromSide, error,
         exchangeCurrencies
     };
 }

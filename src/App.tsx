@@ -7,11 +7,14 @@ function App() {
   const {
     currencies, currencyOne, setCurrencyOne,
     currencyTwo, setCurrencyTwo, setFromSide,
-    exchangeCurrencies
+    exchangeCurrencies, error
   } = useCurrencyConverter();
 
   return (
     <div className="app-container">
+      {error &&
+        <div className="error-message">{error}</div>
+      }
       <h2>Currency Converter</h2>
 
       <CurrencyInput
